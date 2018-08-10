@@ -1,9 +1,6 @@
 package com.example.demo;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,6 +14,26 @@ public class Employees {
     @Size(min=2)
     private String firstName;
 
+    @NotNull
+    @Size(min=2)
+    private String lastName;
+
+    @NotNull
+    @Size(min=4)
+    private String email;
+
+    @NotNull
+    @Size(min=5)
+    private String phone;
+
+//    @NotNull
+//    @Size(min=2)
+//    private String department;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name ="department_id")
+    private Departments departments;
+
     public long getId() {
         return id;
     }
@@ -25,9 +42,15 @@ public class Employees {
         this.id = id;
     }
 
-    @NotNull
-    @Size(min=2)
-    private String lastName;
+
+
+    public Departments getDepartments() {
+        return departments;
+    }
+
+    public void setDepartments(Departments departments) {
+        this.departments = departments;
+    }
 
 
 
@@ -63,24 +86,13 @@ public class Employees {
         this.phone = phone;
     }
 
-    public String getDepartment() {
-        return department;
-    }
+//    public String getDepartment() {
+//        return department;
+//    }
+//
+//    public void setDepartment(String department) {
+//        this.department = department;
+//    }
 
-    public void setDepartment(String department) {
-        this.department = department;
-    }
 
-    @NotNull
-    @Size(min=4)
-
-    private String email;
-
-    @NotNull
-    @Size(min=5)
-    private String phone;
-
-    @NotNull
-    @Size(min=2)
-    private String department;
 }

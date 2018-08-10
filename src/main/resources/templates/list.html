@@ -38,6 +38,19 @@
         </form>
 
 
+        <!--<form action="/search2" method="post">-->
+
+            <!--Department:<br>-->
+            <!--<input type="text" name="department" value="">-->
+            <!--<br><br>-->
+            <!--<input type="submit" value="Submit">-->
+
+
+        <!--</form>-->
+
+
+
+
         <tr>
             <th>First Name</th>
             <th>Last Name</th>
@@ -47,6 +60,7 @@
         <tr th:each="employees :${employees}">
             <td th:text="${employees.firstName}"></td>
             <td th:text="${employees.lastName}"></td>
+            <td th:text="${employees.departments.name}"></td>
             <td>
 
                 <a th:href="@{/detail/{id}(id=${employees.id})}">Detail</a>
