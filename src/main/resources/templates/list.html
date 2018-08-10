@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="x-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"  />
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous" />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <title>Employee</title>
+
+
+</head>
+<body>
+
+<div class="container">
+    <table class="table table-striped">
+        <div align="center">
+            <a > List of a employee </a><br />
+
+        </div>
+
+        <form action="/search" method="post">
+
+            First name:<br>
+            <input type="text" name="firstname" value="">
+            <br><br>
+            <input type="submit" value="Submit">
+
+
+        </form>
+
+
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <td>Detail</td>
+
+        </tr>
+        <tr th:each="employees :${employees}">
+            <td th:text="${employees.firstName}"></td>
+            <td th:text="${employees.lastName}"></td>
+            <td>
+
+                <a th:href="@{/detail/{id}(id=${employees.id})}">Detail</a>
+
+            </td>
+        </tr>
+    </table>
+    <!--<div class="jumbotron" >-->
+        <!--<p><a class="btn btn-primary btn-lg" href="/" role="button">Show all employee</a></p>-->
+
+    <!--</div>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+</body>
+</html>
